@@ -1,6 +1,6 @@
 import { AWClient } from 'aw-client';
 
-let baseURL = '';
+let baseURL = 'http://tracker.komu.vn:5600';
 
 // If running with `npm node dev`, use testing server as origin.
 // Works since CORS is enabled by default when running `aw-server --testing`.

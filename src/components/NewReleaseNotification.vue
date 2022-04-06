@@ -2,7 +2,7 @@
   div
     b-alert(v-if="isVisible", variant="info", show)
       | A new release, v{{ latestVersion }}, is available for
-      | #[a(href="https://activitywatch.net/downloads/" target="_blank" class="alert-link") download],
+      | #[a(href="https://komutracker.net/downloads/" target="_blank" class="alert-link") download],
       | you can also #[a(href="javascript:void(0);" class="alert-link" @click="disableCheck") disable]
       | future reminders and checks for updates.
       button(type="button", class="close", @click="isVisible=false") &times;
@@ -86,7 +86,7 @@ export default {
     async retrieveLatestVersion() {
       try {
         const response = await axios.get(
-          'https://api.github.com/repos/ActivityWatch/activitywatch/releases/latest'
+          'https://api.github.com/repos/KomuTracker/komutracker/releases/latest'
         );
         this.latestVersion = this.cleanVersionTag(response.data.tag_name);
         this.latestVersionDate = moment(response.data.published_at);

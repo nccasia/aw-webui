@@ -2,8 +2,8 @@
   "name": "aw-webui",
   "version": "1.0.0",
   "private": true,
-  "description": "A webui for ActivityWatch built in Vue.js",
-  "author": "ActivityWatch Developers",
+  "description": "A webui for KomuTracker built in Vue.js",
+  "author": "KomuTracker Developers",
   "license": "MPL-2.0",
   "scripts": {
     "serve": "vue-cli-service serve",

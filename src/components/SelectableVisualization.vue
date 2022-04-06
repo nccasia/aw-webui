@@ -21,7 +21,7 @@ div
     div(v-if="!has_prerequisites")
       b-alert.small.px-2.py-1(show variant="warning")
         | This feature is missing data from a required watcher.
-        | You can find a list of all watchers in #[a(href="https://activitywatch.readthedocs.io/en/latest/watchers.html") the documentation].
+        | You can find a list of all watchers in #[a(href="https://komutracker.readthedocs.io/en/latest/watchers.html") the documentation].
 
     div(v-if="type == 'top_apps'")
       aw-summary(:fields="$store.state.activity.window.top_apps",

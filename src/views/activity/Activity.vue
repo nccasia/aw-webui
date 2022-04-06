@@ -263,7 +263,7 @@ export default {
       // it's helpful to render a range for the week as opposed to just the start of the week
       // or the number of the week so users can easily determine (a) if we are using monday/sunday as the week
       // start and exactly when the week ends. The formatting code ends up being a bit more wonky, but it's
-      // worth the tradeoff. https://github.com/ActivityWatch/aw-webui/pull/284
+      // worth the tradeoff. https://github.com/nccasia/aw-webui/pull/284
 
       const startOfWeek = periodStart.format(dateFormatString);
       const endOfWeek = periodStart.add(1, this.periodLength).format(dateFormatString);

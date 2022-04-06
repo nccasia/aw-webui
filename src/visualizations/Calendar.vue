@@ -68,7 +68,7 @@ export default {
       };
     },
     events: function () {
-      // NOTE: This returns FullCalendar events, not ActivityWatch events.
+      // NOTE: This returns FullCalendar events, not KomuTracker events.
       if (this.buckets == null) return [];
 
       const bucket = _.find(this.buckets, b => b.id == this.selectedBucket);

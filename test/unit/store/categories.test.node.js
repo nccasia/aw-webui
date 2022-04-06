@@ -50,7 +50,7 @@ test('create missing parents', () => {
 
 test('update implicit parent category', () => {
   // The default categories have implicit Media and Comms categories (with 'No Rule')
-  // Tests against https://github.com/ActivityWatch/activitywatch/issues/580
+  // Tests against https://github.com/nccasia/komutracker/issues/580
   store.commit('categories/restoreDefaultClasses');
 
   // Check that the label is available
@@ -78,7 +78,7 @@ test('modify a category after deleting another', () => {
   // Deleting a category, then modifying another with an ID subsequent to it, should not
   // cause the changes to be applied to unintended classes.
   // Test against:
-  // https://github.com/ActivityWatch/activitywatch/issues/361#issuecomment-970707045
+  // https://github.com/nccasia/komutracker/issues/361#issuecomment-970707045
   store.commit('categories/restoreDefaultClasses');
 
   // Check that Image category is available

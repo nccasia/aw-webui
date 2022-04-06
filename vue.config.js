@@ -44,7 +44,7 @@ module.exports = {
     },
   },
   pwa: {
-    name: 'ActivityWatch',
+    name: 'KomuTracker',
     iconPaths: {
       favicon32: 'static/logo.png',
       favicon16: 'static/logo.png',

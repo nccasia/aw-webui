@@ -3,9 +3,9 @@ export const window_events = [
     duration: 32.1 * 60,
     data: {
       app: 'Firefox',
-      title: 'ActivityWatch/activitywatch: Track how you spend your time - Mozilla Firefox',
-      url: 'https://github.com/ActivityWatch/activitywatch',
-      $category: ['Work', 'Programming', 'ActivityWatch'],
+      title: 'KomuTracker/komutracker: Track how you spend your time - Mozilla Firefox',
+      url: 'https://github.com/nccasia/komutracker',
+      $category: ['Work', 'Programming', 'KomuTracker'],
     },
   },
   {
@@ -57,16 +57,16 @@ export const window_events = [
     duration: 48.2 * 60,
     data: {
       app: 'Terminal',
-      title: 'vim ~/code/activitywatch/aw-server/aw-webui/src',
-      $category: ['Work', 'Programming', 'ActivityWatch'],
+      title: 'vim ~/code/komutracker/aw-server/aw-webui/src',
+      $category: ['Work', 'Programming', 'KomuTracker'],
     },
   },
   {
     duration: 12.6 * 60,
     data: {
       app: 'Terminal',
-      title: 'bash ~/code/activitywatch',
-      $category: ['Work', 'Programming', 'ActivityWatch'],
+      title: 'bash ~/code/komutracker',
+      $category: ['Work', 'Programming', 'KomuTracker'],
     },
   },
   {

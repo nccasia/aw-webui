@@ -41,8 +41,8 @@ export const defaultCategories: Category[] = [
     },
   },
   {
-    name: ['Work', 'Programming', 'ActivityWatch'],
-    rule: { type: 'regex', regex: 'ActivityWatch|aw-', ignore_case: true },
+    name: ['Work', 'Programming', 'KomuTracker'],
+    rule: { type: 'regex', regex: 'KomuTracker|aw-', ignore_case: true },
   },
   { name: ['Work', 'Image'], rule: { type: 'regex', regex: 'Gimp|Inkscape' } },
   { name: ['Work', 'Video'], rule: { type: 'regex', regex: 'Kdenlive' } },

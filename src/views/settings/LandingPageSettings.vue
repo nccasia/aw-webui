@@ -11,7 +11,7 @@ div
       span(v-else)
         | Loading...
   small
-    | The page to open when opening ActivityWatch, or clicking the logo in the top menu.
+    | The page to open when opening KomuTracker, or clicking the logo in the top menu.
 </template>
 <script>
 export default {

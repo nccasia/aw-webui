@@ -3,7 +3,7 @@
 div
   h3 Query Explorer
 
-  | See #[a(href="https://docs.activitywatch.net/en/latest/examples/querying-data.html") the documentation] for help on how to write queries.
+  | See #[a(href="https://docs.komutracker.net/en/latest/examples/querying-data.html") the documentation] for help on how to write queries.
 
   hr
 

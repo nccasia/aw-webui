@@ -201,7 +201,7 @@ export default {
         const bucketId = _.find(this.groups, g => g.id == groupId).content;
 
         // We retrieve the full event to ensure if's not cut-off by the query range
-        // See: https://github.com/ActivityWatch/aw-webui/pull/320#issuecomment-1056921587
+        // See: https://github.com/nccasia/aw-webui/pull/320#issuecomment-1056921587
         this.editingEvent = await this.$aw.getEvent(bucketId, event.id);
         this.editingEventBucket = bucketId;
 

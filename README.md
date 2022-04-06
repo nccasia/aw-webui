@@ -1,10 +1,10 @@
 # aw-webui
 
-A web-based UI for ActivityWatch, built with Vue.js
+A web-based UI for KomuTracker, built with Vue.js
 
-[![Build Status](https://github.com/ActivityWatch/aw-webui/workflows/Build/badge.svg)](https://github.com/ActivityWatch/aw-webui/actions)
-[![Coverage Status](https://codecov.io/gh/ActivityWatch/aw-webui/branch/master/graph/badge.svg)](https://codecov.io/gh/ActivityWatch/aw-webui)
-[![Known Vulnerabilities](https://snyk.io/test/github/ActivityWatch/aw-webui/badge.svg)](https://snyk.io/test/github/ActivityWatch/aw-webui)
+[![Build Status](https://github.com/nccasia/aw-webui/workflows/Build/badge.svg)](https://github.com/nccasia/aw-webui/actions)
+[![Coverage Status](https://codecov.io/gh/KomuTracker/aw-webui/branch/master/graph/badge.svg)](https://codecov.io/gh/KomuTracker/aw-webui)
+[![Known Vulnerabilities](https://snyk.io/test/github/KomuTracker/aw-webui/badge.svg)](https://snyk.io/test/github/KomuTracker/aw-webui)
 
 ## Getting started
 
@@ -30,7 +30,7 @@ Alternatively, you can run `make dev` to install dependencies and serve the appl
 
 You might have to configure CORS for it to work, see the CORS section below.
 
-You may also want to generate fake data so you have something to test with, see: https://github.com/ActivityWatch/aw-fakedata/
+You may also want to generate fake data so you have something to test with, see: https://github.com/nccasia/aw-fakedata/
 
 ## Building
 
@@ -48,12 +48,12 @@ npm run build
 
 **Note:** Running a development version of aw-webui with an old aw-server can lead to issues due to version incompatibilities.
 
-You can run a development version of aw-webui with your main version of ActivityWatch by building it (or fetching the latest build from CI) and replacing placing the contents of the `static` directory of your aw-server (or aw-server-rust) installation. For simplicity, back up the original directory for easier switching back.
+You can run a development version of aw-webui with your main version of KomuTracker by building it (or fetching the latest build from CI) and replacing placing the contents of the `static` directory of your aw-server (or aw-server-rust) installation. For simplicity, back up the original directory for easier switching back.
 
 The assets are stored in the following directories (relative to your installation directory), depending on if you use aw-server-python (default) or aw-server-rust:
 
- - aw-server-python: `activitywatch/aw-server/aw_server/static/`
- - aw-server-rust: `activitywatch/aw-server-rust/static/`
+ - aw-server-python: `komutracker/aw-server/aw_server/static/`
+ - aw-server-rust: `komutracker/aw-server-rust/static/`
 
 Either copy the assets manually, or run `make build` from the `aw-server` parent directory to rebuild and copy the assets for you.
 
@@ -92,7 +92,7 @@ make test-e2e
 
 For development, you'll also have to add/change CORS configuration in the
 aw-server configs by adding `cors_origins = http://localhost:27180` to your
-configuration file `~/.config/activitywatch/aw-server/aw-server.ini` under the
+configuration file `~/.config/komutracker/aw-server/aw-server.ini` under the
 `server-testing` section.
 
 ### Code structure

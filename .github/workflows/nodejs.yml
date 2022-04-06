@@ -36,20 +36,20 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    # TODO: Refactor out getting ActivityWatch builds (both release and nightly) into an action
-    - name: Install and run ActivityWatch
+    # TODO: Refactor out getting KomuTracker builds (both release and nightly) into an action
+    - name: Install and run KomuTracker
       if: ${{ matrix.aw-version != 'master' }}
       run: |
-        wget --no-verbose -O activitywatch.zip https://github.com/ActivityWatch/activitywatch/releases/download/${{ matrix.aw-version }}/activitywatch-${{ matrix.aw-version }}-linux-x86_64.zip
-        unzip activitywatch.zip
+        wget --no-verbose -O komutracker.zip https://github.com/nccasia/komutracker/releases/download/${{ matrix.aw-version }}/komutracker-${{ matrix.aw-version }}-linux-x86_64.zip
+        unzip komutracker.zip
         ./.github/configure_server.sh
-        ./activitywatch/${{ matrix.aw-server }}/${{ matrix.aw-server }} --testing &
+        ./komutracker/${{ matrix.aw-server }}/${{ matrix.aw-server }} --testing &
 
     - name: Download aw-server-rust nightly
       if: ${{ matrix.aw-server == 'aw-server-rust' && matrix.aw-version == 'master' }}
       uses: dawidd6/action-download-artifact@v2
       with:
-        repo: ActivityWatch/aw-server-rust
+        repo: KomuTracker/aw-server-rust
         # Required, workflow file name or ID
         workflow: build.yml
         # Optional, the status or conclusion of a completed workflow to search for
@@ -74,8 +74,8 @@ jobs:
 
     - name: Insert fake data into aw-server
       run: |
-        pip install click git+https://github.com/ActivityWatch/aw-client.git
-        wget --no-verbose -O fakedata.py https://raw.githubusercontent.com/ActivityWatch/aw-fakedata/master/aw_fakedata.py
+        pip install click git+https://github.com/nccasia/aw-client.git
+        wget --no-verbose -O fakedata.py https://raw.githubusercontent.com/KomuTracker/aw-fakedata/master/aw_fakedata.py
         GITDATE=$(git show -s --format=%ci HEAD | sed -r 's/ .+//g')
         STARTDATE=$(date --date="${GITDATE} -30 day" +%Y-%m-%d)
         python3 fakedata.py --since $STARTDATE --until $GITDATE

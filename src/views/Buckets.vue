@@ -3,7 +3,7 @@ div
   h2 Buckets
 
   b-alert(show)
-    | Are you looking to collect more data? Check out #[a(href="https://activitywatch.readthedocs.io/en/latest/watchers.html") the docs] for more watchers.
+    | Are you looking to collect more data? Check out #[a(href="https://komutracker.readthedocs.io/en/latest/watchers.html") the docs] for more watchers.
 
   b-table(hover, small, :items="buckets", :fields="fields", responsive="md", sort-by="last_updated", :sort-desc="true")
     template(v-slot:cell(id)="data")

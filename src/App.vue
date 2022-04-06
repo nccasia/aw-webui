@@ -14,7 +14,7 @@ div#wrapper
       | Made with
       a(href="https://komutracker.net/donate/", target="_blank")
         icon(name="heart" scale=0.8 color="#E55")
-      | by the #[a(href="http://komutracker.net/contributors/") KomuTracker developers]
+      | by the #[a(href="https://github.com/orgs/nccasia/people/") KomuTracker developers]
       div
         span.mt-2(v-show="info", style="color: #888; font-size: 0.8em")
           span.mr-2

@@ -193,28 +193,28 @@ export default {
       this.$bvModal.show('edit-modal');
     },
     onSelect: async function (properties) {
-      if (properties.items.length == 0) {
-        return;
-      } else if (properties.items.length == 1) {
-        const event = this.chartData[properties.items[0]][6];
-        const groupId = this.items[properties.items[0]].group;
-        const bucketId = _.find(this.groups, g => g.id == groupId).content;
+      // if (properties.items.length == 0) {
+         return;
+      // } else if (properties.items.length == 1) {
+      //   const event = this.chartData[properties.items[0]][6];
+      //   const groupId = this.items[properties.items[0]].group;
+      //   const bucketId = _.find(this.groups, g => g.id == groupId).content;
 
-        // We retrieve the full event to ensure if's not cut-off by the query range
-        // See: https://github.com/nccasia/aw-webui/pull/320#issuecomment-1056921587
-        this.editingEvent = await this.$aw.getEvent(bucketId, event.id);
-        this.editingEventBucket = bucketId;
+      //   // We retrieve the full event to ensure if's not cut-off by the query range
+      //   // See: https://github.com/nccasia/aw-webui/pull/320#issuecomment-1056921587
+      //   this.editingEvent = await this.$aw.getEvent(bucketId, event.id);
+      //   this.editingEventBucket = bucketId;
 
-        this.$nextTick(() => {
-          console.log('Editing event', event, ', in bucket', bucketId);
-          this.openEditor();
-        });
-        alert(
-          "Note: Changes won't be reflected in the timeline until the page is refreshed. This will be improved in a future version."
-        );
-      } else {
-        alert('selected multiple items: ' + JSON.stringify(properties.items));
-      }
+      //   this.$nextTick(() => {
+      //     console.log('Editing event', event, ', in bucket', bucketId);
+      //     this.openEditor();
+      //   });
+      //   alert(
+      //     "Note: Changes won't be reflected in the timeline until the page is refreshed. This will be improved in a future version."
+      //   );
+      // } else {
+      //   alert('selected multiple items: ' + JSON.stringify(properties.items));
+      // }
     },
   },
 };

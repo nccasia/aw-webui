@@ -5,46 +5,46 @@ div#wrapper
   div(:class="{'container': !fullContainer, 'container-fluid': fullContainer}").px-0.px-md-2
     div.aw-container.my-3.p-3
       error-boundary
-        user-satisfaction-poll
-        new-release-notification(v-if="isNewReleaseCheckEnabled")
+        //- user-satisfaction-poll
+        //- new-release-notificaktion(v-if="isNewReleaseCheckEnabled")
         router-view
 
   div.container(style="color: #555; font-size: 0.9em")
-    div.mb-2
+    div.text-center.mb-3
       | Made with
-      a(href="https://komutracker.net/donate/", target="_blank")
+      a(href="https://ncc.asia/", target="_blank")
         icon(name="heart" scale=0.8 color="#E55")
-      | by the #[a(href="https://github.com/orgs/nccasia/people/") KomuTracker developers]
-      div
-        span.mt-2(v-show="info", style="color: #888; font-size: 0.8em")
-          span.mr-2
-            b Host:
-            | &nbsp; {{info.hostname}}
-          span
-            b Version:
-            | &nbsp; {{info.version}}
+      | by #[a(href="https://github.com/orgs/nccasia/people/") NCC]
+      //- div
+      //-   span.mt-2(v-show="info", style="color: #888; font-size: 0.8em")
+      //-     span.mr-2
+      //-       b Host:
+      //-       | &nbsp; {{info.hostname}}
+      //-     span
+      //-       b Version:
+      //-       | &nbsp; {{info.version}}
 
-    div(style="font-size: 0.9em; opacity: 0.8")
-      div.float-none.float-md-right.my-2
-        a(href="https://github.com/nccasia/komutracker/issues/new/choose", target="_blank").mr-3
-          icon(name="bug")
-          | Report a bug
-        a(href="https://forum.komutracker.net/c/support", target="_blank").mr-3
-          icon(name="question-circle")
-          | Ask for help
-        a(href="https://forum.komutracker.net/c/features", target="_blank")
-          icon(name="vote-yea")
-          | Vote on features
-      div.float-none.float-md-left.my-2
-        a(href="https://twitter.com/ActivityWatchIt", target="_blank")
-          icon(name="brands/twitter")
-          | Twitter
-        a(href="https://github.com/nccasia", target="_blank").ml-3
-          icon(name="brands/github")
-          | GitHub
-        a(href="https://komutracker.net/donate/", target="_blank").ml-3
-          icon(name="hand-holding-heart")
-          | Donate
+    //- div(style="font-size: 0.9em; opacity: 0.8")
+    //-   div.float-none.float-md-right.my-2
+    //-     a(href="https://github.com/nccasia/komutracker/issues/new/choose", target="_blank").mr-3
+    //-       icon(name="bug")
+    //-       | Report a bug
+    //-     a(href="https://forum.komutracker.net/c/support", target="_blank").mr-3
+    //-       icon(name="question-circle")
+    //-       | Ask for help
+    //-     a(href="https://forum.komutracker.net/c/features", target="_blank")
+    //-       icon(name="vote-yea")
+    //-       | Vote on features
+    //-   div.float-none.float-md-left.my-2
+    //-     a(href="https://twitter.com/ActivityWatchIt", target="_blank")
+    //-       icon(name="brands/twitter")
+    //-       | Twitter
+    //-     a(href="https://github.com/nccasia", target="_blank").ml-3
+    //-       icon(name="brands/github")
+    //-       | GitHub
+    //-     a(href="https://komutracker.net/donate/", target="_blank").ml-3
+    //-       icon(name="hand-holding-heart")
+    //-       | Donate
 </template>
 
 <script>

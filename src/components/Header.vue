@@ -39,10 +39,10 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
             icon(name="stream")
             | Timeline
 
-        b-nav-item(to="/stopwatch")
-          div.px-2.px-lg-1
-            icon(name="stopwatch")
-            | Stopwatch
+        //- b-nav-item(to="/stopwatch")
+        //-   div.px-2.px-lg-1
+        //-     icon(name="stopwatch")
+        //-     | Stopwatch
 
       // Brand on large screens (centered)
       b-navbar-nav.abs-center.d-none.d-lg-block
@@ -50,30 +50,30 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
           img.ml-0.aligh-middle(src="/static/logo.png" style="height: 1.5em;")
           span.ml-2.align-middle(style="font-size: 1.0em; color: #000;") KomuTracker
 
-      b-navbar-nav.ml-auto
-        b-nav-item-dropdown
-          template(slot="button-content")
-            div.d-inline.px-2.px-lg-1
-              icon(name="tools")
-              | Tools
-          b-dropdown-item(to="/search")
-            icon(name="search")
-            | Search
-          b-dropdown-item(to="/trends")
-            icon(name="chart-bar")
-            | Trends
-          b-dropdown-item(to="/query")
-            icon(name="code")
-            | Query
+      //- b-navbar-nav.ml-auto
+      //-   b-nav-item-dropdown
+      //-     template(slot="button-content")
+      //-       div.d-inline.px-2.px-lg-1
+      //-         icon(name="tools")
+      //-         | Tools
+      //-     b-dropdown-item(to="/search")
+      //-       icon(name="search")
+      //-       | Search
+      //-     b-dropdown-item(to="/trends")
+      //-       icon(name="chart-bar")
+      //-       | Trends
+      //-     b-dropdown-item(to="/query")
+      //-       icon(name="code")
+      //-       | Query
 
-        b-nav-item(to="/buckets")
-          div.px-2.px-lg-1
-            icon(name="database")
-            | Raw Data
-        b-nav-item(to="/settings")
-          div.px-2.px-lg-1
-            icon(name="cog")
-            | Settings
+      //-   b-nav-item(to="/buckets")
+      //-     div.px-2.px-lg-1
+      //-       icon(name="database")
+      //-       | Raw Data
+      //-   b-nav-item(to="/settings")
+      //-     div.px-2.px-lg-1
+      //-       icon(name="cog")
+      //-       | Settings
 </template>
 
 <style lang="scss" scoped>

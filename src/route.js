@@ -25,7 +25,7 @@ const router = new VueRouter({
     {
       path: '/',
       redirect: _to => {
-        return localStorage.landingpage || '/home';
+        return '/timeline';
       },
     },
     { path: '/home', component: Home },

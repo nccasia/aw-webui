@@ -18,8 +18,6 @@ import axios from 'axios';
 import moment from 'moment';
 import semver from 'semver';
 
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-
 import { LONG_BACKOFF_PERIOD, SHORT_BACKOFF_PERIOD } from '~/store/modules/settings.ts';
 
 // After reminding the user every SHORT_BACKOFF_PERIOD days for BACKOFF_THRESHOLD times, switch to LONG_BACKOFF_PERIOD

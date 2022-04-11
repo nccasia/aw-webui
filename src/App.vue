@@ -96,6 +96,7 @@ export default {
         this.info = {};
       }
     );
+    this.$gtm.enable(true);
   },
 };
 </script>

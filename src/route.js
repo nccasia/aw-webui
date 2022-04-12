@@ -25,7 +25,7 @@ const router = new VueRouter({
     {
       path: '/',
       redirect: _to => {
-        return '/timeline';
+        return '/home';
       },
     },
     { path: '/home', component: Home },

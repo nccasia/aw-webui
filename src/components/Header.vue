@@ -18,21 +18,21 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
             | Activity
 
         // If multiple (or no) activity views are available
-        b-nav-item-dropdown(v-if="!activityViews || activityViews.length !== 1")
-          template(slot="button-content")
-            div.d-inline.px-2.px-lg-1
-              icon(name="calendar-day")
-              | Activity
-          b-dropdown-item(v-if="activityViews === null", disabled)
-            span.text-muted Loading...
-            br
-          b-dropdown-item(v-else-if="activityViews && activityViews.length <= 0", disabled)
-            | No activity reports available
-            br
-            small Make sure you have both an AFK and window watcher running
-          b-dropdown-item(v-for="view in activityViews", :key="view.name", :to="view.pathUrl")
-            icon(:name="view.icon")
-            | {{ view.name }}
+        //- b-nav-item-dropdown(v-if="!activityViews || activityViews.length !== 1")
+        //-   template(slot="button-content")
+        //-     div.d-inline.px-2.px-lg-1
+        //-       icon(name="calendar-day")
+        //-       | Activity
+        //-   b-dropdown-item(v-if="activityViews === null", disabled)
+        //-     span.text-muted Loading...
+        //-     br
+        //-   b-dropdown-item(v-else-if="activityViews && activityViews.length <= 0", disabled)
+        //-     | No activity reports available
+        //-     br
+        //-     small Make sure you have both an AFK and window watcher running
+        //-   b-dropdown-item(v-for="view in activityViews", :key="view.name", :to="view.pathUrl")
+        //-     icon(:name="view.icon")
+        //-     | {{ view.name }}
 
         b-nav-item(to="/timeline" style="font-color: #000;")
           div.px-2.px-lg-1
@@ -112,43 +112,43 @@ export default {
     };
   },
   mounted: async function () {
-    const buckets = await this.$aw.getBuckets();
-    const types_by_host = {};
+    // const buckets = await this.$aw.getBuckets();
+    // const types_by_host = {};
 
-    const activityViews = [];
+    // const activityViews = [];
 
-    // TODO: Change to use same bucket detection logic as get_buckets/set_available in store/modules/activity.ts
-    _.each(buckets, v => {
-      types_by_host[v.hostname] = types_by_host[v.hostname] || {};
-      // The '&& true;' is just to typecoerce into booleans
-      types_by_host[v.hostname].afk |= v.type == 'afkstatus';
-      types_by_host[v.hostname].window |= v.type == 'currentwindow';
-      types_by_host[v.hostname].android |= v.type == 'currentwindow' && v.id.includes('android'); // Use other bucket type ID in the future
-    });
-    //console.log(types_by_host);
+    // // TODO: Change to use same bucket detection logic as get_buckets/set_available in store/modules/activity.ts
+    // _.each(buckets, v => {
+    //   types_by_host[v.hostname] = types_by_host[v.hostname] || {};
+    //   // The '&& true;' is just to typecoerce into booleans
+    //   types_by_host[v.hostname].afk |= v.type == 'afkstatus';
+    //   types_by_host[v.hostname].window |= v.type == 'currentwindow';
+    //   types_by_host[v.hostname].android |= v.type == 'currentwindow' && v.id.includes('android'); // Use other bucket type ID in the future
+    // });
+    // //console.log(types_by_host);
 
-    _.each(types_by_host, (types, hostname) => {
-      if (hostname != 'unknown') {
-        activityViews.push({
-          name: hostname,
-          hostname: hostname,
-          type: 'default',
-          pathUrl: `/activity/${hostname}`,
-          icon: 'desktop',
-        });
-      }
-      if (types.android) {
-        activityViews.push({
-          name: `${hostname} (Android)`,
-          hostname: hostname,
-          type: 'android',
-          pathUrl: `/activity/${hostname}`,
-          icon: 'mobile',
-        });
-      }
-    });
+    // _.each(types_by_host, (types, hostname) => {
+    //   if (hostname != 'unknown') {
+    //     activityViews.push({
+    //       name: hostname,
+    //       hostname: hostname,
+    //       type: 'default',
+    //       pathUrl: `/activity/${hostname}`,
+    //       icon: 'desktop',
+    //     });
+    //   }
+    //   if (types.android) {
+    //     activityViews.push({
+    //       name: `${hostname} (Android)`,
+    //       hostname: hostname,
+    //       type: 'android',
+    //       pathUrl: `/activity/${hostname}`,
+    //       icon: 'mobile',
+    //     });
+    //   }
+    // });
 
-    this.activityViews = activityViews;
+    // this.activityViews = activityViews;
   },
 };
 </script>

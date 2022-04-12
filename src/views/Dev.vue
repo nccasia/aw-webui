@@ -11,8 +11,6 @@ div
 <script>
 import moment from 'moment';
 
-console.log(moment);
-
 export default {
   name: 'aw-dev',
 

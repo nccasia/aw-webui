@@ -30,23 +30,24 @@ const COLOR_UNCAT = '#CCC';
 export const defaultCategories: Category[] = [
   {
     name: ['Work'],
-    rule: { type: 'regex', regex: 'Google Docs|libreoffice|ReText' },
+    rule: { type: 'regex', regex: 'Google Docs|libreoffice|ReText|xlsx|docx|json|mstsc|Remote Desktop|Terminal' },
     data: { color: '#0F0' },
   },
   {
     name: ['Work', 'Programming'],
     rule: {
       type: 'regex',
-      regex: 'GitHub|Stack Overflow|BitBucket|Gitlab|vim|Spyder|kate|Ghidra|Scite',
+      regex: 'GitHub|Stack Overflow|BitBucket|Gitlab|vim|Spyder|kate|Ghidra|Scite|Jira|Visual Studio|Mongo|cmd',
     },
   },
   {
-    name: ['Work', 'Programming', 'KomuTracker'],
-    rule: { type: 'regex', regex: 'KomuTracker|aw-', ignore_case: true },
+    name: ['Work', 'Programming', 'IDEs'],
+    rule: { type: 'regex', regex: 'deven|code|idea64', ignore_case: true },
   },
-  { name: ['Work', 'Image'], rule: { type: 'regex', regex: 'Gimp|Inkscape' } },
-  { name: ['Work', 'Video'], rule: { type: 'regex', regex: 'Kdenlive' } },
-  { name: ['Work', 'Audio'], rule: { type: 'regex', regex: 'Audacity' } },
+  {
+    name: ['Work', 'Programming', 'Others'],
+    rule: { type: 'regex', regex: 'Bitbucket|gitlab|github|mintty|pgadmin', ignore_case: true },
+  },
   { name: ['Work', '3D'], rule: { type: 'regex', regex: 'Blender' } },
   {
     name: ['Media', 'Games'],
@@ -85,7 +86,8 @@ export const defaultCategories: Category[] = [
     name: ['Comms', 'IM'],
     rule: {
       type: 'regex',
-      regex: 'Messenger|Telegram|Signal|WhatsApp|Rambox|Slack|Riot|Discord|Nheko',
+      regex: 'Messenger|Telegram|Signal|WhatsApp|Rambox|Slack|Riot|Discord|Nheko|Teams|Skype',
+      ignore_case: true,
     },
   },
   { name: ['Comms', 'Email'], rule: { type: 'regex', regex: 'Gmail|Thunderbird|mutt|alpine' } },

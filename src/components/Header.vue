@@ -12,10 +12,10 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
     b-collapse#nav-collapse(is-nav)
       b-navbar-nav
         // If only a single view (the default) is available
-        b-nav-item(v-if="activityViews && activityViews.length === 1", v-for="view in activityViews", :key="view.name", :to="view.pathUrl")
-          div.px-2.px-lg-1
-            icon(name="calendar-day")
-            | Activity
+        //- b-nav-item(v-if="activityViews && activityViews.length === 1", v-for="view in activityViews", :key="view.name", :to="view.pathUrl")
+        //-   div.px-2.px-lg-1
+        //-     icon(name="calendar-day")
+        //-     | Activity
 
         // If multiple (or no) activity views are available
         //- b-nav-item-dropdown(v-if="!activityViews || activityViews.length !== 1")
@@ -34,10 +34,10 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
         //-     icon(:name="view.icon")
         //-     | {{ view.name }}
 
-        b-nav-item(to="/timeline" style="font-color: #000;")
-          div.px-2.px-lg-1
-            icon(name="stream")
-            | Timeline
+        //- b-nav-item(to="/timeline" style="font-color: #000;")
+        //-   div.px-2.px-lg-1
+        //-     icon(name="stream")
+        //-     | Timeline
 
         //- b-nav-item(to="/stopwatch")
         //-   div.px-2.px-lg-1
@@ -160,6 +160,7 @@ export default {
   background-color: white;
   border: solid $lightBorderColor;
   border-width: 0 0 1px 0;
+  min-height: 50px;
 }
 
 .nav-item {

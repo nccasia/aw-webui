@@ -16,7 +16,11 @@ div
         b.mr-1 Query range:
         span {{ this.periodReadableRange }}
 
+  input-timeinterval(v-model="daterange", :defaultDuration="timeintervalDefaultDuration", :maxDuration="maxDuration")
+  vis-timeline(:buckets="buckets", :showRowLabels='true', :queriedInterval="daterange")
 
+  hr.mb-3
+  
   div.mb-2.d-flex
     div
       b-input-group
@@ -182,9 +186,15 @@ export default {
       includeAudible: true,
       filterAFK: true,
       new_view: {},
+      daterange: null,
+      buckets: null,
+      maxDuration: 31 * 24 * 60 * 60,
     };
   },
   computed: {
+    timeintervalDefaultDuration() {
+      return Number(this.$store.state.settings.durationDefault);
+    },
     periodLengths: function () {
       const periods = ['day', 'week', 'month'];
       if (localStorage.showYearly && JSON.parse(localStorage.showYearly)) {
@@ -273,6 +283,9 @@ export default {
   watch: {
     host: function () {
       this.refresh();
+    },
+    daterange() {
+      this.getBuckets();
     },
     timeperiod: function () {
       this.refresh();
@@ -379,6 +392,15 @@ export default {
       // Hide the modal manually
       this.$nextTick(() => {
         this.$refs.new_view.hide();
+      });
+    },
+
+    getBuckets: async function () {
+      if (this.daterange == null) return;
+      this.buckets = await this.$store.dispatch('buckets/getBucketByHostWithEvents', {
+        host: this.host,
+        start: this.daterange[0].format(),
+        end: this.daterange[1].format(),
       });
     },
 

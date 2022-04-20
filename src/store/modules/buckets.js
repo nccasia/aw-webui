@@ -80,6 +80,18 @@ const actions = {
     return _.orderBy(buckets, [b => b.id], ['asc']);
   },
 
+  async getBucketByHostWithEvents({ state, dispatch }, { host, start, end }) {
+    await dispatch('ensureBuckets');
+    const bucketIds = (Object.values(state.buckets)).filter(b => b.hostname === host);
+    const buckets = await Promise.all(
+      _.map(
+        bucketIds,
+        async bucket => await dispatch('getBucketWithEvents', { id: bucket.id, start, end })
+      )
+    );
+    return _.orderBy(buckets, [b => b.id], ['asc']);
+  },
+
   async deleteBucket({ dispatch }, { bucketId }) {
     console.log(`Deleting bucket ${bucketId}`);
     await this._vm.$aw.deleteBucket(bucketId);

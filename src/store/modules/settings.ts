@@ -26,7 +26,7 @@ interface State {
 // initial state, default settings
 const _state: State = {
   initialTimestamp: moment(),
-  startOfDay: '04:00',
+  startOfDay: '00:00',
   durationDefault: 4 * 60 * 60,
   useColorFallback: false,
   landingpage: '/home',

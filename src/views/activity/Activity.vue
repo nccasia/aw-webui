@@ -11,6 +11,9 @@ div
       li.list-group-item.pl-0.pr-3.py-0(style="border: 0")
         b.mr-1 Time active:
         span {{ $store.state.activity.active.duration | friendlyduration }}
+      li.list-group-item.pl-0.pr-3.py-0(style="border: 0")
+        b.mr-1 Call duration:
+        span {{ $store.state.activity.call.duration | friendlyduration }}
     ul.list-group.list-group-horizontal-md(v-if="this.periodLength != 'day'")
       li.list-group-item.pl-0.pr-3.py-0(style="border: 0")
         b.mr-1 Query range:

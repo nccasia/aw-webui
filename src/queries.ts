@@ -294,6 +294,19 @@ export function dailyActivityQueryAndroid(androidbucket: string): string[] {
   return [`events = query_bucket("${androidbucket}");`, 'RETURN = sum_durations(events);'];
 }
 
+export function callTimeQuery(hostname: string): string[] {
+  hostname = escape_doublequote(hostname);
+  return [
+    `events = flood(query_bucket(find_bucket("aw-watcher-window_${hostname}")));`,
+    'events = filter_keyvals(events, "title", ["KomuTracker - Google Chrome"]);',
+    `afk = flood(query_bucket(find_bucket("aw-watcher-afk_${hostname}")));`,
+    'afk = filter_keyvals(afk, "status", ["afk"]);',
+    'events = filter_period_intersect(events, afk);',
+    'duration = sum_durations(events);',
+    'RETURN = events;',
+  ]
+}
+
 export default {
   fullDesktopQuery,
   appQuery,
@@ -301,4 +314,5 @@ export default {
   hourlyCategoryQuery,
   dailyActivityQueryAndroid,
   editorActivityQuery,
+  callTimeQuery,
 };

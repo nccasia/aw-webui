@@ -68,6 +68,11 @@ const _state = {
     history: {},
   },
 
+  call: {
+    duration: 0,
+    events: [],
+  },
+
   android: {
     available: false,
   },
@@ -152,6 +157,8 @@ const actions = {
         await dispatch('reset_window');
         await dispatch('reset_category');
       }
+
+      await dispatch('query_call_time', query_options);
 
       if (state.active.available) {
         await dispatch('query_active_history', query_options);
@@ -284,6 +291,17 @@ const actions = {
       _.map(data, pair => _.filter(pair, e => e.data.status == 'not-afk'))
     );
     commit('query_active_history_completed', { active_history });
+  },
+
+  async query_call_time({ commit, state }, { timeperiod, host }: QueryOptions) {
+    const periods = [timeperiodToStr(timeperiod)];
+    const data = await this._vm.$aw.query(
+      periods,
+      queries.callTimeQuery(host)
+    );
+    const duration = _.sumBy(_.unionBy(data[0], 'id'), 'duration')
+    
+    commit('query_call_time_completed', { duration });
   },
 
   async query_category_time_by_period(
@@ -557,6 +575,12 @@ const mutations = {
     state.active.history = {
       ...state.active.history,
       ...active_history,
+    };
+  },
+
+  query_call_time_completed(state, { duration }) {
+    state.call = {
+      duration
     };
   },
 

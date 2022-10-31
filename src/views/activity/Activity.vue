@@ -23,7 +23,7 @@ div
   vis-timeline(:buckets="buckets", :showRowLabels='true', :queriedInterval="daterange")
 
   hr.mb-3
-  
+
   div.mb-2.d-flex
     div
       b-input-group
@@ -96,7 +96,7 @@ div
     router-view
 
     aw-devonly
-      b-btn(id="load-demo", @click="load_demo")
+      b-btn.m-3(id="load-demo", @click="load_demo")
         | Load demo data
 </template>
 

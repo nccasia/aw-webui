@@ -28,11 +28,11 @@ div
             option(:value="12*60*60") 12h
             option(:value="24*60*60") 24h
       tr(v-if="mode == 'range'")
-        th.pr-2 Range:
+        th.pr-2.py-1 Range:
         td
           input(type="date", v-model="start")
           input(type="date", v-model="end")
-          button(
+          button.mt-n1(
             class="btn btn-outline-dark btn-sm",
             type="button",
             :disabled="mode == 'range' && (invalidDaterange || emptyDaterange || daterangeTooLong)",
@@ -41,7 +41,18 @@ div
 
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+label {
+  margin: 4px 0;
+}
+input {
+  margin-right: 8px;
+}
+input,
+select {
+  outline: none;
+}
+</style>
 
 <script>
 import moment from 'moment';

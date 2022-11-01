@@ -10,7 +10,7 @@ div(v-if="view")
         icon(name="plus")
         span Add visualization
 
-  div(v-if="editing").my-2
+  div(v-if="editing").mt-2
     div.d-flex.flex-row-reverse
       b-button(variant="outline-dark" @click="discard(); editing = !editing;")
         icon(name="times")
@@ -25,7 +25,7 @@ div(v-if="view")
       b-button.mr-2(variant="danger" size="sm" @click="remove();")
         icon(name="trash")
         span Remove
-  div(v-else).d-flex.flex-row-reverse.my-2
+  div(v-else).d-flex.flex-row-reverse.mt-2
     b-button(variant="outline-dark" size="sm" @click="editing = !editing")
       icon(name="edit")
       span Edit view

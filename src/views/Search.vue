@@ -15,7 +15,7 @@ div
         icon(name="search")
         | Search
 
-  div.d-flex.mt-1
+  div.d-flex.mt-2
     span.mr-auto.small(style="color: #666") Hostname: {{hostname}}
     b-button(size="sm", variant="outline-dark" style="border: 0" @click="show_options = !show_options")
       span(v-if="!show_options")
@@ -26,7 +26,7 @@ div
   div(v-if="show_options")
     h4 Options
     div Hostname
-      select(v-model="hostname")
+      select.ml-2(v-model="hostname")
         option(v-for="hostname in Object.keys($store.getters['buckets/bucketsByHostname'])")
           | {{hostname}}
     div Start: {{start.format()}}
@@ -36,7 +36,7 @@ div
       input(type="checkbox" v-model="use_regex")
     div
       label Exclude time away from computer
-      input(type="checkbox" v-model="filter_afk")
+      input.ml-2(type="checkbox" v-model="filter_afk")
     //div.form-row
       div.form-group.col-md-6
         | Start

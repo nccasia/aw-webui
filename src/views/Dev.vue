@@ -3,8 +3,8 @@ div
   h3 Developer zone
   | Just some tools to aid in development and debugging.
 
-  div
-    b-btn(@click="query_window_timing()") Run window query
+  div.mt-2
+    b-btn.mr-2(@click="query_window_timing()") Run window query
     b-btn(@click="query_browser_timing()") Run browser query
 </template>
 

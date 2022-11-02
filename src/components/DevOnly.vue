@@ -1,10 +1,11 @@
 <template lang="pug">
-div(v-if="show", style="border: 1px solid #aaa; border-radius: 5px")
-  b-alert(v-if="note", variant="warning" show)
-    span.float-left This will not appear in the production build #[span(v-if="reason") ({{ reason }})]
-    b-btn.float-right.hide-devonly(@click="() => { hide = true }", variant="outline-secondary", size="sm")
+div.mt-2(v-if="show", style="border: 1px solid #aaa; border-radius: 5px")
+  b-alert.m-0.px-3.py-2.d-flex.align-items-center.justify-content-between(v-if="note", variant="warning" show)
+    span This will not appear in the production build
+      | #[span(v-if="reason")  ({{ reason }})]
+      | #[template(v-else) .]
+    b-btn.hide-devonly(@click="() => { hide = true }", variant="outline-secondary", size="sm")
       | Hide
-    | .
   slot
 </template>
 

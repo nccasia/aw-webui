@@ -23,18 +23,18 @@ div
   vis-timeline(:buckets="buckets", :showRowLabels='true', :queriedInterval="daterange")
 
   hr.mb-3
-  
+
   div.mb-2.d-flex
     div
       b-input-group
         b-input-group-prepend
-          b-button.px-2(:to="link_prefix + '/' + previousPeriod() + '/' + subview + '/' + currentViewId",
+          b-button.form-border-color.px-2(:to="link_prefix + '/' + previousPeriod() + '/' + subview + '/' + currentViewId",
                    variant="outline-dark")
             icon(name="arrow-left")
         b-select.pl-2.pr-3(:value="periodLength", :options="periodLengths",
                  @change="(periodLength) => setDate(_date, periodLength)")
         b-input-group-append
-          b-button.px-2(:to="link_prefix + '/' + nextPeriod() + '/' + subview + '/' + currentViewId",
+          b-button.form-border-color.px-2(:to="link_prefix + '/' + nextPeriod() + '/' + subview + '/' + currentViewId",
                    :disabled="nextPeriod() > today", variant="outline-dark")
             icon(name="arrow-right")
 
@@ -96,7 +96,7 @@ div
     router-view
 
     aw-devonly
-      b-btn(id="load-demo", @click="load_demo")
+      b-btn.m-3(id="load-demo", @click="load_demo")
         | Load demo data
 </template>
 

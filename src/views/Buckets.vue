@@ -57,7 +57,7 @@ div
     b-card(header="Import buckets")
       b-alert(v-if="import_error" show variant="danger" dismissable)
         | {{ import_error }}
-      b-form-file(v-model="import_file"
+      b-form-file.mb-2(v-model="import_file"
                   placeholder="Choose a file or drop file here..."
                   drop-placeholder="Drop file here...")
       // TODO: This spinner could be placed in a more suitable place

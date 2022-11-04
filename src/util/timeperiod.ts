@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import { get_day_start_with_offset } from '~/util/time';
 
 export interface TimePeriod {
@@ -111,4 +111,12 @@ export function timeperiodsMonthsOfPeriod(timeperiod: TimePeriod): TimePeriod[] 
     periods.push({ start, length: _length });
   }
   return periods;
+}
+
+export function getDateRangeLastDuration(start: Moment, duration: number) {
+  const now = moment();
+  return [
+    moment(`${start.format('YYYY-MM-DD')} ${now.format('HH:mm:ss')}`).subtract(duration, 'seconds'),
+    moment(`${start.format('YYYY-MM-DD')} ${now.format('HH:mm:ss')}`),
+  ];
 }

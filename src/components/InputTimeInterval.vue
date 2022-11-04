@@ -56,6 +56,7 @@ select {
 
 <script>
 import moment from 'moment';
+import { getDateRangeLastDuration } from '~/util/timeperiod';
 export default {
   name: 'input-timeinterval',
   props: {
@@ -66,6 +67,10 @@ export default {
     maxDuration: {
       type: Number,
       default: null,
+    },
+    date: {
+      type: String,
+      default: moment().format(),
     },
   },
   data() {
@@ -82,7 +87,7 @@ export default {
         if (this.mode == 'range' && this.start && this.end) {
           return [moment(this.start), moment(this.end)];
         } else {
-          return [moment().subtract(this.duration, 'seconds'), moment()];
+          return getDateRangeLastDuration(moment(this.date), this.duration);
         }
       },
     },
@@ -101,12 +106,15 @@ export default {
     this.valueChanged();
   },
   methods: {
-    valueChanged() {
+    valueChanged(e) {
       if (
         this.mode == 'last_duration' ||
         (!this.emptyDaterange && !this.invalidDaterange && !this.daterangeTooLong)
       ) {
         this.$emit('input', this.value);
+        if (e) {
+          this.$emit('changeDuration', Number(e.target.value));
+        }
       }
     },
   },

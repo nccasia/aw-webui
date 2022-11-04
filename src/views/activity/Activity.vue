@@ -19,7 +19,7 @@ div
         b.mr-1 Query range:
         span {{ this.periodReadableRange }}
 
-  input-timeinterval(v-model="daterange", :defaultDuration="timeintervalDefaultDuration", :maxDuration="maxDuration")
+  input-timeinterval(v-model="daterange", :defaultDuration="timeintervalDefaultDuration", :maxDuration="maxDuration", :date="date", @changeDuration="changeDuration")
   vis-timeline(:buckets="buckets", :showRowLabels='true', :queriedInterval="daterange")
 
   hr.mb-3
@@ -151,7 +151,7 @@ div
 <script>
 import moment from 'moment';
 import { get_day_start_with_offset, get_today_with_offset } from '~/util/time';
-import { periodLengthConvertMoment } from '~/util/timeperiod';
+import { periodLengthConvertMoment, getDateRangeLastDuration } from '~/util/timeperiod';
 import _ from 'lodash';
 
 import 'vue-awesome/icons/arrow-left';
@@ -192,6 +192,7 @@ export default {
       daterange: null,
       buckets: null,
       maxDuration: 31 * 24 * 60 * 60,
+      duration: null,
     };
   },
   computed: {
@@ -279,11 +280,17 @@ export default {
       // worth the tradeoff. https://github.com/nccasia/aw-webui/pull/284
 
       const startOfWeek = periodStart.format(dateFormatString);
-      const endOfWeek = periodStart.add(1, this.periodLength).format(dateFormatString);
-      return `${startOfWeek}—${endOfWeek}`;
+      const endOfWeek = periodStart
+        .add(1, this.periodLength)
+        .subtract(1, 'days')
+        .format(dateFormatString);
+      return `${startOfWeek} — ${endOfWeek}`;
     },
   },
   watch: {
+    date() {
+      this.setDateRange(this.date, this.periodLength);
+    },
     host: function () {
       this.refresh();
     },
@@ -305,6 +312,7 @@ export default {
   },
 
   mounted: async function () {
+    this.duration = this.timeintervalDefaultDuration;
     this.$store.dispatch('settings/ensureLoaded');
     this.$store.dispatch('views/load');
     this.$store.dispatch('categories/load');
@@ -324,6 +332,19 @@ export default {
   },
 
   methods: {
+    changeDuration: function (duration) {
+      this.duration = duration;
+    },
+    setDateRange: function (start, periodLength) {
+      if (periodLength === 'day') {
+        this.daterange = getDateRangeLastDuration(moment(start), this.duration);
+      } else {
+        this.daterange = [
+          moment(start).startOf('day'),
+          moment(start).add(1, `${periodLength}s`).startOf('day'),
+        ];
+      }
+    },
     previousPeriod: function () {
       return moment(this._date).subtract(1, `${this.periodLength}s`).format('YYYY-MM-DD');
     },
@@ -338,6 +359,7 @@ export default {
       }
       const new_period_length_moment = periodLengthConvertMoment(periodLength);
       const new_date = moment(date).startOf(new_period_length_moment).format('YYYY-MM-DD');
+      this.setDateRange(date, periodLength);
       this.$router.push(
         `/activity/${this.host}/${periodLength}/${new_date}/${this.subview}/${this.currentViewId}`
       );

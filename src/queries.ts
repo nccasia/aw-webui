@@ -221,7 +221,11 @@ export function fullDesktopQuery(
 
     app_events  = limit_events(app_events, ${default_limit});
     title_events  = limit_events(title_events, ${default_limit});
-    duration = sum_durations(events);
+    not_afk = query_bucket("${afkbucket}");
+    not_afk = filter_keyvals(not_afk, "status", ["not-afk"]);
+    not_afk = merge_events(not_afk);
+    not_afk= flood(not_afk);
+    duration = sum_durations(not_afk);
     ` + // Browser events are retrieved in canonicalQuery
       `
     browser_events = split_url_events(browser_events);

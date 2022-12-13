@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { get_day_start_with_offset } from '~/util/time';
+import { START_OF_DAY } from '~/util/consts';
 
 export interface TimePeriod {
   start: string;
@@ -11,13 +12,18 @@ export function dateToTimeperiod(
   offset: string,
   duration?: [number, string]
 ): TimePeriod {
-  return { start: get_day_start_with_offset(date, offset), length: duration || [1, 'day'] };
+  const defaultDuration = 24 * 60 - convertStartOfDayStrToMinute(START_OF_DAY);
+  return {
+    start: get_day_start_with_offset(date, offset),
+    length: duration || [defaultDuration, 'minutes'],
+  };
 }
 
 export function timeperiodToStr(tp: TimePeriod): string {
   const start = moment(tp.start).format();
   const end = moment(start)
     .add(tp.length[0], tp.length[1] as moment.unitOfTime.DurationConstructor)
+    .subtract(convertStartOfDayStrToMinute(START_OF_DAY), 'minutes')
     .format();
   return [start, end].join('/');
 }
@@ -111,4 +117,9 @@ export function timeperiodsMonthsOfPeriod(timeperiod: TimePeriod): TimePeriod[] 
     periods.push({ start, length: _length });
   }
   return periods;
+}
+
+export function convertStartOfDayStrToMinute(startOfDay: string): number {
+  const temp = startOfDay.split(':');
+  return Number(temp[0]) * 60 + Number(temp[1]);
 }

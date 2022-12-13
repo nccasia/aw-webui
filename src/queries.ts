@@ -286,8 +286,10 @@ export function dailyActivityQuery(afkbucket: string): string[] {
   afkbucket = escape_doublequote(afkbucket);
   return [
     'afkbucket = "' + afkbucket + '";',
-    'not_afk = flood(query_bucket(afkbucket));',
+    'not_afk = query_bucket(afkbucket);',
     'not_afk = filter_keyvals(not_afk, "status", ["not-afk"]);',
+    'not_afk = merge_events(not_afk);',
+    'not_afk = flood(not_afk);',
     'not_afk = merge_events_by_keys(not_afk, ["status"]);',
     'RETURN = not_afk;',
   ];

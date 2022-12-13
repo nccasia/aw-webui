@@ -1,4 +1,5 @@
 import moment, { Moment } from 'moment';
+import { START_OF_DAY } from '~/util/consts';
 
 // Backoffs for NewReleaseNotification
 export const SHORT_BACKOFF_PERIOD = 24 * 60 * 60;
@@ -26,7 +27,7 @@ interface State {
 // initial state, default settings
 const _state: State = {
   initialTimestamp: moment(),
-  startOfDay: '00:00',
+  startOfDay: START_OF_DAY,
   durationDefault: 4 * 60 * 60,
   useColorFallback: false,
   landingpage: '/home',

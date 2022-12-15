@@ -245,6 +245,7 @@ const actions = {
     { timeperiod, filterCategories, filterAFK, includeAudible }: QueryOptions
   ) {
     const periods = [timeperiodToStr(timeperiod)];
+    console.log("periods",periods)
     const classes = loadClassesForQuery();
     const q = queries.fullDesktopQuery(
       state.buckets.browser,
@@ -299,7 +300,9 @@ const actions = {
       periods,
       queries.callTimeQuery(host)
     );
-    const duration = _.sumBy(_.unionBy(data[0], 'id'), 'duration')
+    console.log(data)
+    const duration = data[0].duration
+    // const duration = _.sumBy(_.unionBy(data[0], 'id'), 'duration')
     
     commit('query_call_time_completed', { duration });
   },

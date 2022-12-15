@@ -305,11 +305,13 @@ export function callTimeQuery(hostname: string): string[] {
   return [
     `events = flood(query_bucket(find_bucket("aw-watcher-window_${hostname}")));`,
     'events = filter_keyvals(events, "title", ["KomuTracker - Google Chrome"]);',
-    `afk = flood(query_bucket(find_bucket("aw-watcher-afk_${hostname}")));`,
+    `afk = query_bucket(find_bucket("aw-watcher-afk_${hostname}"));`,
     'afk = filter_keyvals(afk, "status", ["afk"]);',
+    'afk = merge_events(afk);',
+    'afk = flood(afk);',
     'events = filter_period_intersect(events, afk);',
     'duration = sum_durations(events);',
-    'RETURN = events;',
+    'RETURN = {"events": events, "duration": duration};',
   ]
 }
 

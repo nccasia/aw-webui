@@ -5,31 +5,16 @@
     <title>KomuTracker</title>
     <link rel="icon" type="image/png" href="/static/logo.png" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <% if (isDevelopment) { %>
-    <!-- Development: cho phép localhost -->
     <meta
       http-equiv="Content-Security-Policy"
       content="
-      default-src 'self' localhost:* 127.0.0.1:* ws://localhost:* ws://127.0.0.1:*;
+      default-src 'self' <%= domain %> <%= domain %>:443 <%= domain %>:5600 <%= domain %>:27180 localhost:* 127.0.0.1:* ws://<%= domain %>:27180 ws://localhost:* ws://127.0.0.1:*;
       img-src 'self' data:; 
       font-src 'self' data:; 
       style-src 'self' 'unsafe-inline'; 
       object-src 'none'; 
       script-src 'self' *.msecnd.net *.google.com *.gstatic.com https://www.googletagmanager.com 'unsafe-eval'"
     />
-    <% } else { %>
-    <!-- Production: sử dụng domain cụ thể -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="
-      default-src 'self' <%= domain %> <%= domain %>:443 <%= domain %>:5600 <%= domain %>:27180 ws://<%= domain %>:27180;
-      img-src 'self' data:; 
-      font-src 'self' data:; 
-      style-src 'self' 'unsafe-inline'; 
-      object-src 'none'; 
-      script-src 'self' *.msecnd.net *.google.com *.gstatic.com https://www.googletagmanager.com"
-    />
-    <% } %>
   </head>
   <body>
     <noscript>

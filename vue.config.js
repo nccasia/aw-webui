@@ -26,7 +26,6 @@ module.exports = {
             options,
           },
           domain: process.env.VUE_APP_DOMAIN || 'localhost',
-          isDevelopment: process.env.NODE_ENV === 'development',
         };
       };
       return args;

@@ -15,6 +15,21 @@ module.exports = {
       options[0]['process.env'].VUE_APP_ON_ANDROID = argv.os == 'android';
       return options;
     });
+    config.plugin('html-index').tap(args => {
+      args[0].templateParameters = (compilation, assets, assetTags, options) => {
+        return {
+          compilation,
+          webpackConfig: compilation.options,
+          htmlWebpackPlugin: {
+            tags: assetTags,
+            files: assets,
+            options,
+          },
+          domain: process.env.VUE_APP_DOMAIN || 'localhost',
+        };
+      };
+      return args;
+    });
   },
   configureWebpack: {
     // sourcemaps are not enabled when `--watch` is used https://github.com/vuejs/vue-cli/issues/1806#issuecomment-832111894

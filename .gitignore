@@ -11,3 +11,5 @@ __pycache__
 screenshots
 /modules
 .vscode
+
+.env

@@ -52,7 +52,7 @@ div
     div(v-if="type == 'top_editor_languages'")
       aw-summary(:fields="$store.state.activity.editor.top_languages",
                  :namefunc="e => e.data.language",
-                 :colorfunc="e => e.data.language",
+                 :colorfunc="languageColorFunc"
                  with_limit)
     div(v-if="type == 'top_editor_projects'")
       aw-summary(:fields="$store.state.activity.editor.top_projects",
@@ -99,6 +99,8 @@ import { buildBarchartDataset } from '~/util/datasets';
 
 // TODO: Move this somewhere else
 import { build_category_hierarchy } from '~/util/classes';
+
+import { getColorFromString } from '~/util/color';
 
 function pick_subname_as_name(c) {
   c.name = c.subname;
@@ -149,6 +151,10 @@ export default {
         return f;
       },
       top_editor_projects_hoverfunc: e => e.data.project,
+      languageColorFunc: e => {
+        const langName = e.data.language;
+        return getColorFromString(langName);
+      },
     };
   },
   computed: {

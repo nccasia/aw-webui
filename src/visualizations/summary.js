@@ -56,11 +56,14 @@ function update(container, apps) {
   _.each(apps, function (app, i) {
     // TODO: Expand on click and list titles
 
+    const rawColor = app.color ?? app.colorKey ?? app.name;
+
+    const appcolor = rawColor?.startsWith('#') ? rawColor : getCategoryColorFromString(rawColor);
+
     // Variables
     const width = (app.duration / longest_duration) * 100 + '%';
     const barHeight = 46;
     const textSize = 14;
-    const appcolor = app.color || getCategoryColorFromString(app.colorKey || app.name);
     const hovercolor = Color(appcolor).darken(0.1).hex();
 
     // The group representing an application in the barchart

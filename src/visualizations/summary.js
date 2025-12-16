@@ -56,14 +56,9 @@ function update(container, apps) {
   _.each(apps, function (app, i) {
     // TODO: Expand on click and list titles
 
-    let rawColor = app.color || app.colorKey || app.name;
-    let appcolor;
+    const rawColor = app.color ?? app.colorKey ?? app.name;
 
-    if (rawColor && rawColor.startsWith('#')) {
-      appcolor = rawColor;
-    } else {
-      appcolor = getCategoryColorFromString(rawColor || app.name);
-    }
+    const appcolor = rawColor?.startsWith('#') ? rawColor : getCategoryColorFromString(rawColor);
 
     // Variables
     const width = (app.duration / longest_duration) * 100 + '%';

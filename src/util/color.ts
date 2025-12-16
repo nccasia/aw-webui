@@ -37,6 +37,13 @@ const customColors = {
   python: '#369', // Python blue #2b5b84
   javascript: '#f6b', // JavaScript pink #eb47a5
 
+  typescript: '#3178c6',
+  html: '#e34c26',
+  css: '#563d7c',
+  'c++': '#f34b7d',
+  java: '#b07219',
+  php: '#4F5D95',
+
   // Developer domains
   localhost: '#CCC',
   'github.com': '#EBF',

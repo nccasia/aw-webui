@@ -1,6 +1,10 @@
 import moment, { Moment, Duration } from 'moment';
 
-export function seconds_to_duration(seconds: number) {
+export function seconds_to_duration(seconds: number | undefined | null) {
+  if (!seconds || isNaN(seconds) || seconds < 0) {
+    return '0s';
+  }
+
   // Returns a human-readable duration string
   const hrs = Math.floor(seconds / 60 / 60);
   const min = Math.floor((seconds / 60) % 60);

@@ -35,8 +35,8 @@ const getters = {
       id.startsWith('aw-watcher-android')
     );
   },
-  editorBuckets(state) {
-    return get_buckets_by_type(state.buckets, 'app.editor.activity');
+  editorBucketsByHost: state => host => {
+    return get_buckets_by_host_and_type(state.buckets, host, 'app.editor.activity');
   },
   browserBuckets(state) {
     return get_buckets_by_type(state.buckets, 'web.tab.current');

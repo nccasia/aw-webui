@@ -428,7 +428,7 @@ const actions = {
       window: rootGetters['buckets/windowBucketsByHost'](host),
       android: rootGetters['buckets/androidBucketsByHost'](host),
       browser: rootGetters['buckets/browserBuckets'],
-      editor: rootGetters['buckets/editorBuckets'],
+      editor: rootGetters['buckets/editorBucketsByHost'](host),
     };
     console.log('Available buckets: ', buckets);
     commit('buckets', buckets);
